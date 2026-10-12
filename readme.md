@@ -265,4 +265,4 @@ python create/tools/analyze_csv.py run_sparse.csv run_medium.csv run_dense.csv
 
 ---
 
-**GitHub Repository:** https://github.com/ESDA-LAB/robotic_project_2026
+**Για απορίες και ερωτήσεις :** a.spournias@esdalab.ece.uop.gr
