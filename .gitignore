@@ -1,0 +1,18 @@
+# Webots compiled controllers
+*.exe
+*.o
+*.obj
+
+# Python generated files
+__pycache__/
+*.pyc
+
+# Webots temporary files
+*.log
+
+# Simulation results
+run_log.csv
+
+# Editor files
+.vscode/
+.idea/
