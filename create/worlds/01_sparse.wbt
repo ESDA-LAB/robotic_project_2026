@@ -15,11 +15,11 @@ EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/project
 
 WorldInfo {
   info [
-    "iRobot Create simulation"
-    "The vacuum cleaner robot goes randomly into the apartment while a supervisor tracks its position and alterates the ground texture."
-    "The robot can be stopped by the virtual walls emitting IR light."
+    "ESDA Lab LiDAR obstacle avoidance assignment"
+    "Sparse scenario: iRobot Create with a 360-degree LiDAR"
+    "Controller: student_lidar (Python)"
   ]
-  title "iRobot Create"
+  title "ESDA Lab - Sparse LiDAR scenario"
 }
 Viewpoint {
   orientation 0.36895104882333746 0.7282767074008142 -0.5774843383413859 1.397038466031713
