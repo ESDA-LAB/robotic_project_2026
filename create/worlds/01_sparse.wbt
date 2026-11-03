@@ -105,7 +105,7 @@ LandscapePainting {
 }
 DEF IROBOT_CREATE Create {
   translation -3.69248 0.0193578 0.0899546
-  rotation 0 0 1 0.0
+  rotation 0 0 1 0
   controller "student_lidar"
   bodySlot [
     Transform {
@@ -176,7 +176,7 @@ Robot {
     size 9.9 9.9
   }
   locked TRUE
-  controller "generic"
+  controller "<generic>"
   supervisor FALSE
 }
 
