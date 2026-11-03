@@ -16,3 +16,13 @@ run_log.csv
 # Editor files
 .vscode/
 .idea/
+
+# Webots local project files
+*.wbproj
+*.wbt.bak
+
+# Original reference world
+original_create_reference.wbt
+
+# Generated experiment results
+create/results/

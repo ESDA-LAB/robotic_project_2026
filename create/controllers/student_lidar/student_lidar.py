@@ -4,12 +4,53 @@
 from controller import Robot
 import math
 import csv
+import atexit
 from pathlib import Path
 
 FRONT_LIMIT_M = 0.65
 CAUTION_LIMIT_M = 0.95
 CRUISE_RAD_S = 7.0
 TURN_RAD_S = 5.0
+
+# CSV logging configuration
+# Common data format for all simulation experiments
+
+CSV_COLUMNS = [
+    "time_s",
+    "front_m",
+    "left_m",
+    "right_m",
+    "left_speed",
+    "right_speed",
+    "mode",
+    "avoidance_events",
+    "bumper_events"
+]
+
+# Folder for experiment results
+LOG_DIR = Path(__file__).resolve().parents[2] / "results"
+
+# Create results folder if it does not exist
+LOG_DIR.mkdir(parents=True, exist_ok=True)
+
+# CSV file for the current experiment
+CSV_FILE = LOG_DIR / "run_log.csv"
+
+# Open CSV file and write column headers
+csv_file = CSV_FILE.open("w", newline="", encoding="utf-8")
+csv_writer = csv.DictWriter(csv_file, fieldnames=CSV_COLUMNS)
+csv_writer.writeheader()
+csv_file.flush()
+
+# Close the CSV file on normal Python interpreter shutdown
+atexit.register(csv_file.close)
+
+# Cumulative avoidance counter
+avoidance_events = 0
+previous_mode = None
+
+# Bumper events are not measured in the starter version
+bumper_events = 0
 
 robot = Robot()
 step_ms = int(robot.getBasicTimeStep())
@@ -48,6 +89,37 @@ while robot.step(step_ms) != -1:
     # left_motor.setVelocity(left_speed)
     # right_motor.setVelocity(right_speed)
 
-    # TODO 4: CSV με simulation time, front, speeds, mode.
-    # Σκοπίμως το ρομπότ παραμένει ακίνητο μέχρι να ολοκληρώσετε τα TODO.
+    # TODO 4 - CSV DATA LOGGING (Φοιτητής Β)
+    # Σκοπός:
+    # Καταγραφή των δεδομένων λειτουργίας του ρομπότ.
+    #
+    # 1. Πάρτε τον χρόνο προσομοίωσης:
+    #    robot.getTime()
+    #
+    # 2. Χρησιμοποιήστε τις μεταβλητές:
+    #    front, left, right
+    #    left_speed, right_speed, mode
+    #    που θα υπολογίζονται στο TODO 3.
+    #
+    # 3. Αυξήστε τον μετρητή avoidance_events
+    #    κάθε φορά που το ρομπότ εισέρχεται στην
+    #    κατάσταση TURN από άλλη κατάσταση.
+    #    Χρησιμοποιήστε τη μεταβλητή previous_mode.
+    #
+    # 4. Δημιουργήστε ένα dictionary με τις στήλες
+    #    που ορίζονται στο CSV_COLUMNS.
+    #
+    # 5. Καταγράψτε μία γραμμή στο CSV με:
+    #    csv_writer.writerow(...)
+    #
+    # 6. Αποθηκεύστε τις εγγραφές:
+    #    csv_file.flush()
+    #
+    # Σημείωση:
+    # Το bumper_events παραμένει 0, καθώς δεν
+    # υλοποιείται μέτρηση των αισθητήρων επαφής.
+    # Η τιμή αυτή ΔΕΝ σημαίνει μηδενικές συγκρούσεις.
+    #
+    # =========================================================
+
     pass
